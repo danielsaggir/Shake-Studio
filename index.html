@@ -18,17 +18,24 @@
   </section>
 
   <section class="gallery">
-    <img src="shake1.jpeg" alt="תמונה של הסטודיו" />
+    <img src="Photos/shake1.jpeg" alt="תמונה של הסטודיו" />
     <img src="studio2.jpg" alt="פילאטיס מכשירים" />
   </section>
 
   <section class="form">
     <h2>השאירו פרטים ונחזור אליכם:</h2>
-    <form id="contactForm">
+    <form action="https://formsubmit.co/your@email.com" method="POST">
       <input type="text" name="name" placeholder="שם מלא" required />
       <input type="tel" name="phone" placeholder="טלפון" required />
+      <input type="email" name="email" placeholder="אימייל" required />
+      <textarea name="message" placeholder="הודעה" rows="4"></textarea>
       <button type="submit">שלחו לי פרטים</button>
-    </form>
+      <!-- כדי לעקוף CAPTCHA -->
+<input type="hidden" name="_captcha" value="false">
+
+<!-- כדי לשנות את עמוד ההודיה -->
+<input type="hidden" name="_next" value="https://yourdomain.com/thank-you.html">
+    </form>    
   </section>
 
   <footer>
