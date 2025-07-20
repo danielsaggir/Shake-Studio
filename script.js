@@ -16,28 +16,13 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   })
   .then(response => {
     if (response.ok) {
-      Swal.fire({
-        icon: 'success',
-        title: 'נשלח בהצלחה!',
-        text: 'נחזור אליך בהקדם 😊',
-        confirmButtonText: 'סגור'
-      });
+      alert("הטופס נשלח בהצלחה!");
       document.getElementById("contactForm").reset();
     } else {
-      Swal.fire({
-        icon: 'error',
-        title: 'שגיאה',
-        text: 'אירעה תקלה בשליחה. נסה שוב.',
-        confirmButtonText: 'סגור'
-      });
+      alert("אירעה שגיאה בשליחה.");
     }
   })
   .catch(error => {
-    Swal.fire({
-      icon: 'error',
-      title: 'שגיאת רשת',
-      text: 'בדוק את החיבור ונסה שוב מאוחר יותר.',
-      confirmButtonText: 'סגור'
-    });
+    alert("שגיאה ברשת.");
   });
 });
