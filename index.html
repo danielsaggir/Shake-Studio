@@ -24,14 +24,13 @@
 
   <section class="form">
     <h2>השאירו פרטים ונחזור אליכם:</h2>
-    <form action="https://formsubmit.co/danielsaggir%40gmail.com" method="POST">
+    <form id="contactForm">
       <input type="text" name="name" placeholder="שם מלא" required />
       <input type="tel" name="phone" placeholder="טלפון" required />
       <input type="email" name="email" placeholder="אימייל" required />
       <textarea name="message" placeholder="הודעה" rows="4"></textarea>
       <button type="submit">שלחו לי פרטים</button>
-      <!-- כדי לעקוף CAPTCHA -->
-<input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_captcha" value="false">
     </form>    
   </section>
 
