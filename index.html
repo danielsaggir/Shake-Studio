@@ -1,45 +1,98 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>סטודיו פילאטיס</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>סטודיו פילאטיס</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-  <header>
-    <h1>סטודיו לפילאטיס מכשירים בחולון</h1>
-    <p>שיעור ניסיון ראשון ב-49 ₪ בלבד!</p>
-  </header>
+    <header>
+        <h1>סטודיו לפילאטיס מכשירים בחולון</h1>
+        <p>שיעור ניסיון ראשון ב-49 ₪ בלבד!</p>
+        <div class="scroll-indicator">↓</div>
+    </header>
 
-  <section class="about">
-    <h2>על הסטודיו</h2>
-    <p>סטודיו אינטימי ונעים עם מדריכות מוסמכות, פילאטיס מכשירים וקבוצות קטנות – לכל הרמות.</p>
-  </section>
+    <section class="about">
+        <h2>על הסטודיו</h2>
+        <p>סטודיו אינטימי ונעים עם מדריכות מוסמכות, פילאטיס מכשירים וקבוצות קטנות – לכל הרמות.</p>
+    </section>
 
-  <section class="gallery">
-    <img src="Photos/shake1.jpeg" alt="תמונה של הסטודיו" />
-    <img src="studio2.jpg" alt="פילאטיס מכשירים" />
-  </section>
+    <!-- Image Divider 1 -->
+    <div class="section-divider" style="background-image: url('Photos/shake1.jpeg');"></div>
 
-  <section class="form">
-    <h2>השאירו פרטים ונחזור אליכם:</h2>
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="שם מלא" required />
-      <input type="tel" name="phone" placeholder="טלפון" required />
-      <input type="email" name="email" placeholder="אימייל" required />
-      <textarea name="message" placeholder="הודעה" rows="4"></textarea>
-      <button type="submit">שלחו לי פרטים</button>
-      <input type="hidden" name="_captcha" value="false">
-    </form>    
-  </section>
+    <!-- Service Sections -->
+    <section class="service-section">
+        <div class="service-content">
+            <div class="service-text">
+                <h3>פילאטיס מכשירים</h3>
+                <p>אימון מותאם אישית על מכשירי פילאטיס מקצועיים. מחזק את השרירים העמוקים, משפר את היציבה ומגביר את הגמישות.</p>
+                <p>מתאים לכל הרמות - ממתחילים ועד מתקדמים. האימון מתבצע בקבוצות קטנות עם ליווי אישי.</p>
+            </div>
+            <div class="service-image">
+                <img src="Photos/shake1.jpeg" alt="פילאטיס מכשירים" />
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    <p>📍 חולון | סטודיו פילאטיס באווירה ביתית</p>
-  </footer>
+    <!-- Image Divider 2 -->
+    <div class="section-divider" style="background-image: url('studio2.jpg');"></div>
 
-  <!-- טוען את קובץ ה-JavaScript החיצוני שלך -->
-  <script src="script.js"></script>
+    <section class="service-section">
+        <div class="service-content">
+            <div class="service-image">
+                <img src="studio2.jpg" alt="אימון כוח" />
+            </div>
+            <div class="service-text">
+                <h3>אימוני כוח</h3>
+                <p>אימוני חיזוק מותאמים אישית לבניית מסת שריר ושיפור הכוח הכללי. משלבים משקולות, גומיות ומשקל גוף.</p>
+                <p>האימונים מתאימים לכל הרמות ומותאמים לצרכים האישיים של כל משתתף.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Divider 3 -->
+    <div class="section-divider" style="background-image: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8)), url('Photos/shake1.jpeg');"></div>
+
+    <section class="service-section">
+        <div class="service-content">
+            <div class="service-text">
+                <h3>אימון פונקציונלי</h3>
+                <p>אימונים המשלבים תנועות טבעיות ופונקציונליות לחיזוק הגוף כיחידה אחת. משפר את הקואורדינציה והיציבות.</p>
+                <p>מתמקד בתנועות יום-יומיות ומכין את הגוף למאמצים בחיי היומיום.</p>
+            </div>
+            <div class="service-image">
+                <div class="placeholder-image">
+                    תמונה של אימון פונקציונלי
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="gallery-container">
+            <img src="Photos/shake1.jpeg" alt="תמונה של הסטודיו" />
+            <img src="studio2.jpg" alt="פילאטיס מכשירים" />
+        </div>
+    </section>
+
+    <section class="form">
+        <h2>השאירו פרטים ונחזור אליכם:</h2>
+        <form id="contactForm">
+            <input type="text" name="name" placeholder="שם מלא" required />
+            <input type="tel" name="phone" placeholder="טלפון" required />
+            <input type="email" name="email" placeholder="אימייל" required />
+            <textarea name="message" placeholder="הודעה" rows="4"></textarea>
+            <button type="submit">שלחו לי פרטים</button>
+            <input type="hidden" name="_captcha" value="false">
+        </form>
+    </section>
+
+    <footer>
+        <p>📍 חולון | סטודיו פילאטיס באווירה ביתית</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
