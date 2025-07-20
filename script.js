@@ -1,5 +1,6 @@
 document.getElementById("contactForm").addEventListener("submit", function (e) {
   e.preventDefault();
+
   fetch("https://formsubmit.co/ajax/danielsaggir@gmail.com", {
     method: "POST",
     headers: {
@@ -15,13 +16,28 @@ document.getElementById("contactForm").addEventListener("submit", function (e) {
   })
   .then(response => {
     if (response.ok) {
-      alert("הטופס נשלח בהצלחה! נחזור אליך בקרוב.");
+      Swal.fire({
+        icon: 'success',
+        title: 'נשלח בהצלחה!',
+        text: 'נחזור אליך בהקדם 😊',
+        confirmButtonText: 'סגור'
+      });
       document.getElementById("contactForm").reset();
     } else {
-      alert("אירעה שגיאה בשליחה.");
+      Swal.fire({
+        icon: 'error',
+        title: 'שגיאה',
+        text: 'אירעה תקלה בשליחה. נסה שוב.',
+        confirmButtonText: 'סגור'
+      });
     }
   })
   .catch(error => {
-    alert("שגיאה ברשת.");
+    Swal.fire({
+      icon: 'error',
+      title: 'שגיאת רשת',
+      text: 'בדוק את החיבור ונסה שוב מאוחר יותר.',
+      confirmButtonText: 'סגור'
+    });
   });
 });
