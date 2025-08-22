@@ -1,3 +1,4 @@
+/* -------------------- RESET -------------------- */
 * {
   margin: 0;
   padding: 0;
@@ -8,14 +9,39 @@ html, body {
   overflow-x: hidden;
 }
 
-/* מצב התחלתי של כל הסקשנים */
+/* -------------------- VARIABLES -------------------- */
+:root {
+  --primary-color: #20b2aa;    /* צבע טורקיז מהלוגו */
+  --secondary-color: #17a199; /* טורקיז כהה יותר */
+  --accent-color: #25d5cb;    /* טורקיז בהיר */
+  --text-dark: #2c3e50;
+  --text-light: #555;
+  --bg-light: #f8fffe;        /* רקע עם נגיעה של טורקיז */
+  --white: #ffffff;
+  --shadow-sm: 0 2px 10px rgba(32, 178, 170, 0.1);
+  --shadow-md: 0 10px 30px rgba(32, 178, 170, 0.15);
+  --shadow-lg: 0 20px 40px rgba(32, 178, 170, 0.2);
+}
+
+/* -------------------- GENERAL -------------------- */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* -------------------- SCROLL ANIMATIONS -------------------- */
 .about, .service-section, .section-divider, .testimonials, .faq, .form, .map-section {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
+  will-change: transform, opacity;
 }
-
-/* כשהאלמנט נכנס לתצוגה */
 .about.visible,
 .service-section.visible,
 .section-divider.visible,
@@ -26,70 +52,12 @@ html, body {
   opacity: 1;
   transform: translateY(0);
 }
+/* Testimonials cards delay */
+.testimonials.visible .testimonial:nth-child(1) { transition-delay: 0.2s; }
+.testimonials.visible .testimonial:nth-child(2) { transition-delay: 0.4s; }
+.testimonials.visible .testimonial:nth-child(3) { transition-delay: 0.6s; }
 
-/* מצב התחלתי של testimonials */
-.testimonials .testimonial {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-/* כשהבלוק נכנס */
-.testimonials.visible .testimonial {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* דיליי שונה לכל כרטיס */
-.testimonials.visible .testimonial:nth-child(1) {
-  transition-delay: 0.2s;
-}
-.testimonials.visible .testimonial:nth-child(2) {
-  transition-delay: 0.4s;
-}
-.testimonials.visible .testimonial:nth-child(3) {
-  transition-delay: 0.6s;
-}
-.about, .service-section, .section-divider, .testimonials, .faq, .form, .map-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-}
-
-.about.visible, .service-section.visible, .section-divider.visible,
-.testimonials.visible, .faq.visible, .form.visible, .map-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-:root {
-  --primary-color: #20b2aa;  /* צבע טורקיז מהלוגו */
-  --secondary-color: #17a199;  /* טורקיז כהה יותר */
-  --accent-color: #25d5cb;  /* טורקיז בהיר */
-  --text-dark: #2c3e50;
-  --text-light: #555;
-  --bg-light: #f8fffe;  /* רקע עם נגיעה של טורקיז */
-  --white: #ffffff;
-  --shadow-sm: 0 2px 10px rgba(32, 178, 170, 0.1);
-  --shadow-md: 0 10px 30px rgba(32, 178, 170, 0.15);
-  --shadow-lg: 0 20px 40px rgba(32, 178, 170, 0.2);
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: var(--text-dark);
-  overflow-x: hidden;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-/* WhatsApp Floating Button Wrapper */
+/* -------------------- WHATSAPP FLOATING BUTTON -------------------- */
 .whatsapp-wrapper {
   position: fixed;
   bottom: 30px;
@@ -98,18 +66,13 @@ body {
   align-items: center;
   gap: 10px;
   z-index: 1000;
-  text-decoration: none;
 }
-
-/* הקישור עצמו עוטף גם את האייקון וגם את הטקסט */
 .whatsapp-link {
   display: flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
 }
-
-/* WhatsApp Button */
 .whatsapp-float {
   width: 60px;
   height: 60px;
@@ -122,11 +85,9 @@ body {
   font-size: 30px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
-  cursor: pointer;
   animation: pulse 2s infinite;
+  cursor: pointer;
 }
-
-/* Text bubble */
 .whatsapp-text {
   background: var(--bg-light);
   color: var(--text-dark);
@@ -140,40 +101,19 @@ body {
   transition: all 0.3s ease, opacity 0.3s ease;
   opacity: 0.9;
 }
-
-/* Hover – גם אייקון וגם טקסט */
 .whatsapp-link:hover .whatsapp-float {
   transform: scale(1.1);
   box-shadow: 0 5px 20px rgba(37, 211, 102, 0.6);
   background: #1ebe5a;
 }
-
 .whatsapp-link:hover .whatsapp-text {
-  background: #f5f5f5;  /* רקע טיפה מודגש */
+  background: #f5f5f5;
   border-color: #bbb;
   color: #000;
-  opacity: 1;           /* הופך אותו יותר מודגש */
+  opacity: 1;
 }
 
-/* Pulse Animation */
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
-  }
-  70% {
-    transform: scale(1.05);
-    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-  }
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
-}
-
-
-
-/* Header - Hero Section */
+/* -------------------- HEADER / HERO -------------------- */
 header {
   height: 100vh;
   background: linear-gradient(135deg, rgba(32, 178, 170, 0.9), rgba(23, 161, 153, 0.8)), 
@@ -188,37 +128,25 @@ header {
   color: white;
   position: relative;
 }
-
-/* Logo Section */
+header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+}
 .logo-container {
   margin-bottom: 2rem;
   animation: fadeInUp 0.8s ease-out;
   z-index: 1;
 }
-
 .logo-container img {
-  width: 500px;        /* הגדלת הלוגו */
+  width: 500px;
   height: auto;
-  filter: brightness(0) invert(1);  /* הופך ללבן */
-  
-  /* חידוד תמונה מוגדלת */
+  filter: brightness(0) invert(1);
   image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
-
-
-
-header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-}
-
 header h1 {
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
@@ -228,7 +156,6 @@ header h1 {
   z-index: 1;
   position: relative;
 }
-
 .hero-badge {
   font-size: clamp(1.2rem, 3vw, 1.8rem);
   margin-bottom: 2rem;
@@ -243,8 +170,6 @@ header h1 {
   position: relative;
   display: inline-block;
 }
-
-/* Scroll indicator */
 .scroll-indicator {
   position: absolute;
   bottom: 30px;
@@ -256,28 +181,18 @@ header h1 {
   cursor: pointer;
 }
 
-/* About Section */
+/* -------------------- ABOUT -------------------- */
 .about {
   padding: 80px 20px;
   text-align: center;
   background: var(--bg-light);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease;
 }
-
-.about.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .about h2 {
   font-size: clamp(2rem, 4vw, 3rem);
   margin-bottom: 2rem;
   font-weight: 700;
   color: var(--text-dark);
 }
-
 .about p {
   font-size: clamp(1.1rem, 2vw, 1.4rem);
   max-width: 800px;
@@ -286,40 +201,27 @@ header h1 {
   color: var(--text-light);
 }
 
-/* Service Sections */
+/* -------------------- SERVICES -------------------- */
 .service-section {
   padding: 100px 20px;
-  opacity: 0;
-  transition: opacity 1.2s ease, transform 1.2s ease;
   position: relative;
   overflow: hidden;
   background: var(--bg-light);
+  transition: opacity 1.2s ease, transform 1.2s ease;
 }
-
-/* אפקט זיגזג עדין */
-.service-section:nth-of-type(odd) {
-  transform: translateX(60px);
-}
-.service-section:nth-of-type(even) {
-  transform: translateX(-60px);
-}
-
-.service-section.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
+.service-section:nth-of-type(odd) { transform: translateX(60px); }
+.service-section:nth-of-type(even) { transform: translateX(-60px); }
+.service-section.visible { transform: translateX(0); }
 
 .service-content {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 40px; /* הקטן את הרווח בין תמונה לטקסט */
   align-items: center;
 }
 
-
-/* Primary Button */
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -328,26 +230,20 @@ header h1 {
   padding: 15px 30px;
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   color: white;
-  text-decoration: none;
   border-radius: 50px;
   font-weight: 600;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
+  text-decoration: none;
   box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  white-space: nowrap; /* 👈 שומר את הטקסט בשורה אחת */
 }
-
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
 }
-
-.btn-primary i {
-  transition: transform 0.3s ease;
-}
-
-.btn-primary:hover i {
-  transform: translateX(-5px);
-}
+.btn-primary i { transition: transform 0.3s ease; }
+.btn-primary:hover i { transform: translateX(-5px); }
 
 .service-image {
   position: relative;
@@ -356,14 +252,10 @@ header h1 {
   box-shadow: var(--shadow-lg);
   transition: transform 0.3s ease;
 }
-
-.service-image:hover {
-  transform: scale(1.02);
-}
-
+.service-image:hover { transform: scale(1.02); }
 .service-image img {
   width: 100%;
-  height: 400px;
+  height: 450px;   /* 👈 הגדלנו טיפה את הגובה */
   object-fit: cover;
 }
 
@@ -373,69 +265,59 @@ header h1 {
   background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
   border-radius: 15px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   color: white;
   font-size: 1.5rem;
   text-align: center;
   gap: 20px;
 }
 
-/* Section Dividers */
+/* -------------------- SECTION DIVIDER -------------------- */
 .section-divider {
   height: 400px;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   position: relative;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease;
 }
-
-.section-divider.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .section-divider::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-      to bottom,
-      rgba(248, 249, 250, 0.8) 0%,
-      rgba(248, 249, 250, 0.3) 30%,
-      rgba(248, 249, 250, 0.3) 70%,
-      rgba(248, 249, 250, 0.8) 100%
-  );
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(248, 249, 250, 0.8) 0%,
+    rgba(248, 249, 250, 0.3) 30%,
+    rgba(248, 249, 250, 0.3) 70%,
+    rgba(248, 249, 250, 0.8) 100%);
 }
 
-/* Testimonials Section */
+/* -------- התאמות למסכים קטנים (כמו אייפון) -------- */
+@media (max-width: 768px) {
+  .service-content {
+    grid-template-columns: 1fr; /* טקסט ותמונה אחד מתחת לשני */
+    gap: 30px;
+  }
+  .service-image {
+    order: -1; /* 👈 תמיד תופיע לפני הטקסט */
+  }
+  .service-image img {
+    height: 300px; /* פחות גובה במסכים קטנים */
+  }
+}
+
+/* -------------------- TESTIMONIALS -------------------- */
 .testimonials {
   padding: 100px 20px;
   background: white;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease;
 }
-
-.testimonials.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .testimonials h2 {
   text-align: center;
   font-size: clamp(2rem, 4vw, 2.5rem);
   margin-bottom: 3rem;
   color: var(--text-dark);
 }
-
 .testimonials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -443,7 +325,6 @@ header h1 {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 .testimonial-card {
   background: var(--bg-light);
   padding: 30px;
@@ -451,16 +332,8 @@ header h1 {
   box-shadow: var(--shadow-md);
   transition: transform 0.3s ease;
 }
-
-.testimonial-card:hover {
-  transform: translateY(-5px);
-}
-
-.stars {
-  color: #ffc107;
-  margin-bottom: 15px;
-}
-
+.testimonial-card:hover { transform: translateY(-5px); }
+.stars { color: #ffc107; margin-bottom: 15px; }
 .testimonial-card p {
   font-size: 1.1rem;
   line-height: 1.8;
@@ -468,48 +341,22 @@ header h1 {
   margin-bottom: 20px;
   font-style: italic;
 }
+.testimonial-author { display: flex; flex-direction: column; }
+.testimonial-author strong { color: var(--text-dark); font-size: 1.1rem; }
+.testimonial-author span { color: var(--text-light); font-size: 0.9rem; }
 
-.testimonial-author {
-  display: flex;
-  flex-direction: column;
-}
-
-.testimonial-author strong {
-  color: var(--text-dark);
-  font-size: 1.1rem;
-}
-
-.testimonial-author span {
-  color: var(--text-light);
-  font-size: 0.9rem;
-}
-
-/* FAQ Section */
+/* -------------------- FAQ -------------------- */
 .faq {
   padding: 100px 20px;
   background: var(--bg-light);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease;
 }
-
-.faq.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .faq h2 {
   text-align: center;
   font-size: clamp(2rem, 4vw, 2.5rem);
   margin-bottom: 3rem;
   color: var(--text-dark);
 }
-
-.faq-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
+.faq-container { max-width: 800px; margin: 0 auto; }
 .faq-item {
   background: white;
   border-radius: 15px;
@@ -517,7 +364,6 @@ header h1 {
   box-shadow: var(--shadow-sm);
   overflow: hidden;
 }
-
 .faq-question {
   width: 100%;
   padding: 20px 30px;
@@ -530,61 +376,32 @@ header h1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background 0.3s ease;
   text-align: right;
+  transition: background 0.3s ease;
 }
-
-.faq-question:hover {
-  background: var(--bg-light);
-}
-
-.faq-question i {
-  transition: transform 0.3s ease;
-  color: var(--primary-color);
-}
-
-.faq-item.active .faq-question i {
-  transform: rotate(180deg);
-}
-
+.faq-question:hover { background: var(--bg-light); }
+.faq-question i { transition: transform 0.3s ease; color: var(--primary-color); }
+.faq-item.active .faq-question i { transform: rotate(180deg); }
 .faq-answer {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease, padding 0.3s ease;
 }
+.faq-item.active .faq-answer { max-height: 300px; padding: 0 30px 20px; }
+.faq-answer p { color: var(--text-light); line-height: 1.8; }
 
-.faq-item.active .faq-answer {
-  max-height: 300px;
-  padding: 0 30px 20px;
-}
-
-.faq-answer p {
-  color: var(--text-light);
-  line-height: 1.8;
-}
-
-/* Form Section */
+/* -------------------- FORM -------------------- */
 .form {
   padding: 100px 20px;
   background: white;
   text-align: center;
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease;
 }
-
-.form.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .form h2 {
   font-size: clamp(2rem, 4vw, 2.5rem);
   margin-bottom: 3rem;
   color: var(--text-dark);
   font-weight: 700;
 }
-
 #contactForm {
   max-width: 600px;
   margin: 0 auto;
@@ -593,7 +410,6 @@ header h1 {
   border-radius: 20px;
   box-shadow: var(--shadow-lg);
 }
-
 #contactForm input,
 #contactForm textarea {
   width: 100%;
@@ -602,18 +418,16 @@ header h1 {
   border: 2px solid #e1e1e1;
   border-radius: 15px;
   font-size: 1.1rem;
-  transition: all 0.3s ease;
   font-family: inherit;
   background: white;
+  transition: all 0.3s ease;
 }
-
 #contactForm input:focus,
 #contactForm textarea:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 20px rgba(102, 126, 234, 0.1);
 }
-
 #contactForm button {
   width: 100%;
   padding: 15px;
@@ -624,39 +438,28 @@ header h1 {
   font-size: 1.2rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  transition: all 0.3s ease;
 }
-
 #contactForm button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
 }
 
-/* Map Section */
+/* -------------------- MAP SECTION -------------------- */
 .map-section {
   padding: 100px 20px;
   background: var(--bg-light);
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.8s ease;
 }
-
-.map-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .map-section h2 {
   text-align: center;
   font-size: clamp(2rem, 4vw, 2.5rem);
   margin-bottom: 3rem;
   color: var(--text-dark);
 }
-
 .map-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -665,13 +468,12 @@ header h1 {
   box-shadow: var(--shadow-lg);
 }
 
-/* Footer */
+/* -------------------- FOOTER -------------------- */
 footer {
   padding: 50px 20px 20px;
   background: #333;
   color: white;
 }
-
 .footer-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -683,22 +485,9 @@ footer {
   padding-bottom: 30px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-
-.footer-info p {
-  margin-bottom: 10px;
-  font-size: 1.1rem;
-}
-
-.footer-info i {
-  margin-left: 10px;
-  color: var(--primary-color);
-}
-
-.footer-social {
-  display: flex;
-  gap: 20px;
-}
-
+.footer-info p { margin-bottom: 10px; font-size: 1.1rem; }
+.footer-info i { margin-left: 10px; color: var(--primary-color); }
+.footer-social { display: flex; gap: 20px; }
 .footer-social a {
   width: 40px;
   height: 40px;
@@ -709,129 +498,4 @@ footer {
   justify-content: center;
   color: white;
   text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.footer-social a:hover {
-  background: var(--primary-color);
-  transform: translateY(-3px);
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: 20px;
-  color: rgba(255,255,255,0.7);
-}
-
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-10px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-5px);
-  }
-}
-
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .whatsapp-float {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    bottom: 20px;
-    left: 20px;
-  }
-
-  header h1 {
-    padding: 0 20px;
-  }
-
-  .service-content {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .service-image {
-    order: -1;
-  }
-
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-info p {
-    justify-content: center;
-  }
-
-  #contactForm {
-    padding: 30px 20px;
-  }
-
-  .section-divider {
-    background-attachment: scroll;
-    height: 300px;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero-badge {
-    padding: 12px 24px;
-  }
-
-  .btn-primary {
-    padding: 12px 24px;
-    font-size: 1rem;
-  }
-
-  .faq-question {
-    padding: 15px 20px;
-    font-size: 1.1rem;
-  }
-}
-
-/* Tablet Responsive */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .service-content {
-    gap: 40px;
-  }
-
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-/* Large Desktop */
-@media (min-width: 1440px) {
-  .container {
-    max-width: 1400px;
-  }
-
-  header h1 {
-    font-size: 4rem;
-  }
-
-  .hero-badge {
-    font-size: 2rem;
-    padding: 20px 40px;
-  }
 }
