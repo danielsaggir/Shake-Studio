@@ -3,6 +3,65 @@
   padding: 0;
   box-sizing: border-box;
 }
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* מצב התחלתי של כל הסקשנים */
+.about, .service-section, .section-divider, .testimonials, .faq, .form, .map-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+/* כשהאלמנט נכנס לתצוגה */
+.about.visible,
+.service-section.visible,
+.section-divider.visible,
+.testimonials.visible,
+.faq.visible,
+.form.visible,
+.map-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* מצב התחלתי של testimonials */
+.testimonials .testimonial {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+/* כשהבלוק נכנס */
+.testimonials.visible .testimonial {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* דיליי שונה לכל כרטיס */
+.testimonials.visible .testimonial:nth-child(1) {
+  transition-delay: 0.2s;
+}
+.testimonials.visible .testimonial:nth-child(2) {
+  transition-delay: 0.4s;
+}
+.testimonials.visible .testimonial:nth-child(3) {
+  transition-delay: 0.6s;
+}
+.about, .service-section, .section-divider, .testimonials, .faq, .form, .map-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.about.visible, .service-section.visible, .section-divider.visible,
+.testimonials.visible, .faq.visible, .form.visible, .map-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 :root {
   --primary-color: #20b2aa;  /* צבע טורקיז מהלוגו */
