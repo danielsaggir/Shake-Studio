@@ -149,7 +149,7 @@ body {
 
 /* -------------------- HEADER / HERO -------------------- */
 header {
-  height: 100vh;
+  min-height: 100vh; /* במקום height: 100vh כדי למנוע בעיות באייפון */
   background: linear-gradient(135deg, rgba(32, 178, 170, 0.9), rgba(23, 161, 153, 0.8)), 
               url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23e0f7f6" width="1200" height="800"/><g opacity="0.1"><circle cx="200" cy="200" r="80" fill="%2320b2aa"/><circle cx="800" cy="300" r="60" fill="%2317a199"/><circle cx="400" cy="600" r="70" fill="%2325d5cb"/><circle cx="1000" cy="150" r="50" fill="%2320b2aa"/></g></svg>');
   background-size: cover;
@@ -161,18 +161,22 @@ header {
   text-align: center;
   color: white;
   position: relative;
+  padding: 60px 20px 140px; /* ריווח פנימי שמונע התנגשויות */
 }
+
 header::before {
   content: '';
   position: absolute;
   inset: 0;
   background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
 }
+
 .logo-container {
   margin-bottom: 2rem;
   animation: fadeInUp 0.8s ease-out;
   z-index: 1;
 }
+
 .logo-container img {
   width: 500px;
   height: auto;
@@ -181,6 +185,7 @@ header::before {
   image-rendering: crisp-edges;
   image-rendering: pixelated;
 }
+
 header h1 {
   font-size: clamp(1rem, 2.5vw, 1.8rem); /* קטן בהרבה מהקודם */
   font-weight: 600; /* טיפה פחות מודגש */
@@ -191,11 +196,9 @@ header h1 {
   position: relative;
 }
 
-
-
 .hero-badge {
   position: absolute;
-  bottom: 120px;   /* 👈 בדיוק איפה שאתה רוצה – אפשר לשחק עם הערך */
+  bottom: 120px; /* במחשבים גדולים */
   left: 50%;
   transform: translateX(-50%);
   font-size: clamp(1rem, 2.5vw, 1.4rem);
@@ -210,8 +213,6 @@ header h1 {
   display: inline-block;
 }
 
-
-
 .scroll-indicator {
   position: absolute;
   bottom: 30px;
@@ -223,24 +224,37 @@ header h1 {
   cursor: pointer;
 }
 
+/* מובייל – יותר קומפקטי, החץ נשאר מיושר למרכז */
 @media (max-width: 600px) {
+  header {
+    min-height: auto;
+    height: auto;
+    padding: 60px 20px 100px; /* מספיק מקום לחץ */
+    position: relative;
+  }
+
+  .logo-container img {
+    width: 280px;
+  }
+
   .hero-badge {
-    bottom: 100px !important; /* מכריח אותו לעלות קצת יותר */
+    position: relative; /* במקום absolute */
+    margin-top: 30px;
+    margin-bottom: 30px;
+    transform: none;
     font-size: 0.9rem;
     padding: 8px 16px;
   }
 
   .scroll-indicator {
-    bottom: 15px !important; /* מוריד אותו למטה */
-    font-size: 1.4rem;
-  }
-
-  .logo-container img {
-    width: 300px; /* מצמצם לוגו במובייל */
+    position: absolute;
+    bottom: 20px; /* תמיד בתחתית */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.6rem;
+    animation: bounce 1.8s infinite ease-in-out;
   }
 }
-
-
 
 /* אנימציה של קפיצה עדינה */
 @keyframes bounce {
