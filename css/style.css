@@ -223,18 +223,23 @@ header h1 {
   cursor: pointer;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .hero-badge {
-    bottom: 80px;   /* 👈 יישב יותר קרוב לחץ */
-    font-size: 1rem; /* 👈 טקסט קטן יותר */
-    padding: 10px 18px;
+    bottom: 100px !important; /* מכריח אותו לעלות קצת יותר */
+    font-size: 0.9rem;
+    padding: 8px 16px;
   }
 
   .scroll-indicator {
-    bottom: 20px;   /* 👈 טיפה למטה */
-    font-size: 1.6rem; /* 👈 קטן יותר במסכים קטנים */
+    bottom: 15px !important; /* מוריד אותו למטה */
+    font-size: 1.4rem;
+  }
+
+  .logo-container img {
+    width: 300px; /* מצמצם לוגו במובייל */
   }
 }
+
 
 
 /* אנימציה של קפיצה עדינה */
