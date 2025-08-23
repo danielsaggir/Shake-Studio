@@ -238,14 +238,18 @@ header h1 {
     width: 280px;
   }
 
+
   .hero-badge {
     position: relative; 
-    margin: 30px auto;   /* 👈 ממורכז באמצע */
+    margin: 30px auto;    /* מרכז אופקית */
     transform: none;
     font-size: 0.9rem;
     padding: 8px 16px;
-    display: inline-block;
+    display: block;       /* 👈 במקום inline-block */
+    text-align: center;   /* 👈 לוודא שהטקסט באמצע */
+    max-width: fit-content; /* שלא ימתח */
   }
+
 
   .scroll-indicator {
     position: absolute;
