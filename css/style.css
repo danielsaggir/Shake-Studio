@@ -149,8 +149,7 @@ body {
 
 /* -------------------- HEADER / HERO -------------------- */
 header {
-  min-height: 100vh;   /* fallback */
-  min-height: 100dvh;  /* גובה אמיתי במובייל מודרני */
+  min-height: 100vh; /* במקום height: 100vh כדי למנוע בעיות באייפון */
   background: linear-gradient(135deg, rgba(32, 178, 170, 0.9), rgba(23, 161, 153, 0.8)), 
               url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23e0f7f6" width="1200" height="800"/><g opacity="0.1"><circle cx="200" cy="200" r="80" fill="%2320b2aa"/><circle cx="800" cy="300" r="60" fill="%2317a199"/><circle cx="400" cy="600" r="70" fill="%2325d5cb"/><circle cx="1000" cy="150" r="50" fill="%2320b2aa"/></g></svg>');
   background-size: cover;
@@ -162,7 +161,7 @@ header {
   text-align: center;
   color: white;
   position: relative;
-  padding: 60px 20px 140px; /* ריווח שמונע התנגשויות */
+  padding: 60px 20px 140px; /* ריווח פנימי שמונע התנגשויות */
 }
 
 header::before {
@@ -188,10 +187,10 @@ header::before {
 }
 
 header h1 {
-  font-size: clamp(1rem, 2.5vw, 1.8rem); 
-  font-weight: 600;
+  font-size: clamp(1rem, 2.5vw, 1.8rem); /* קטן בהרבה מהקודם */
+  font-weight: 600; /* טיפה פחות מודגש */
   margin-bottom: 0.8rem;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.25);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.25); /* עדין יותר */
   animation: fadeInUp 1s ease-out;
   z-index: 1;
   position: relative;
@@ -199,7 +198,7 @@ header h1 {
 
 .hero-badge {
   position: absolute;
-  bottom: 120px; 
+  bottom: 120px; /* במחשבים גדולים */
   left: 50%;
   transform: translateX(-50%);
   font-size: clamp(1rem, 2.5vw, 1.4rem);
@@ -225,10 +224,12 @@ header h1 {
   cursor: pointer;
 }
 
-/* מובייל – יותר קומפקטי, ה-badge והחץ לא מתנגשים */
+/* מובייל – יותר קומפקטי, החץ נשאר מיושר למרכז */
 @media (max-width: 600px) {
   header {
-    padding: 40px 20px 100px; /* מספיק מקום לחץ בתחתית */
+    min-height: auto;
+    height: auto;
+    padding: 60px 20px 100px; /* מספיק מקום לחץ */
     position: relative;
   }
 
@@ -237,7 +238,7 @@ header h1 {
   }
 
   .hero-badge {
-    position: relative; 
+    position: relative; /* במקום absolute */
     margin-top: 30px;
     margin-bottom: 30px;
     transform: none;
@@ -247,7 +248,7 @@ header h1 {
 
   .scroll-indicator {
     position: absolute;
-    bottom: 20px; 
+    bottom: 20px; /* תמיד בתחתית */
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.6rem;
