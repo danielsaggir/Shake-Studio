@@ -230,7 +230,7 @@ header h1 {
   header {
     min-height: auto;
     height: auto;
-    padding: 40px 20px 100px; /* מספיק מקום לחץ בתחתית */
+    padding: 40px 20px 120px; /* קצת יותר מקום ללמטה */
     position: relative;
   }
 
@@ -238,18 +238,17 @@ header h1 {
     width: 280px;
   }
 
-
   .hero-badge {
-    position: relative; 
-    margin: 30px auto;    /* מרכז אופקית */
-    transform: none;
+    position: absolute;     /* 👈 חוזר להיות absolute */
+    bottom: 80px;           /* 👈 יישב מעל החץ */
+    left: 50%;              /* 👈 מיושר לאמצע */
+    transform: translateX(-50%);
     font-size: 0.9rem;
     padding: 8px 16px;
-    display: block;       /* 👈 במקום inline-block */
-    text-align: center;   /* 👈 לוודא שהטקסט באמצע */
-    max-width: fit-content; /* שלא ימתח */
+    border-radius: 30px;
+    display: inline-block;
+    text-align: center;
   }
-
 
   .scroll-indicator {
     position: absolute;
@@ -260,6 +259,7 @@ header h1 {
     animation: bounce 1.8s infinite ease-in-out;
   }
 }
+
 
 /* אנימציה של קפיצה עדינה */
 @keyframes bounce {
