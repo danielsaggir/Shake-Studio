@@ -148,6 +148,7 @@ body {
 }
 
 /* -------------------- HEADER / HERO -------------------- */
+/* -------------------- HEADER / HERO -------------------- */
 header {
   min-height: 100vh;   /* fallback */
   min-height: 100dvh;  /* גובה אמיתי במובייל מודרני */
@@ -182,9 +183,6 @@ header::before {
   width: 500px;
   height: auto;
   filter: brightness(0) invert(1);
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-  image-rendering: pixelated;
 }
 
 header h1 {
@@ -198,7 +196,10 @@ header h1 {
 }
 
 .hero-badge {
-  margin-top: 100px;
+  position: absolute;
+  bottom: 80px;          /* 👈 תמיד קצת מעל החץ */
+  left: 50%;
+  transform: translateX(-50%);
   font-size: clamp(1rem, 2.5vw, 1.4rem);
   background: linear-gradient(45deg, #fff, rgba(255,255,255,0.9));
   color: var(--primary-color);
@@ -208,13 +209,11 @@ header h1 {
   animation: fadeInUp 1s ease-out 0.3s both;
   box-shadow: 0 6px 20px rgba(32, 178, 170, 0.2);
   z-index: 2;
-  display: inline-block; /* נשאר בתוך הזרימה של flex */
-  text-align: center;
 }
 
 .scroll-indicator {
   position: absolute;
-  bottom: 30px;
+  bottom: 20px;   /* 👈 נשאר בתחתית */
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 1.8s infinite ease-in-out;
@@ -234,14 +233,14 @@ header h1 {
   }
 
   .hero-badge {
-    margin-top: 20px;
+    bottom: 70px;   /* 👈 במובייל יותר קרוב לחץ */
     font-size: 0.9rem;
     padding: 8px 16px;
     border-radius: 30px;
   }
 
   .scroll-indicator {
-    bottom: 20px;
+    bottom: 15px;
     font-size: 1.6rem;
   }
 }
@@ -256,11 +255,6 @@ header h1 {
   }
   60% {
     transform: translateX(-50%) translateY(-6px);
-  }
-}
-@media (min-width: 1025px) {
-  .hero-badge {
-    margin-top: 170px; /* 👈 היה 10px, עכשיו יורד קצת יותר נמוך */
   }
 }
 
