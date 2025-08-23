@@ -36,14 +36,18 @@ body {
 }
 
 /* -------------------- SCROLL ANIMATIONS -------------------- */
-.about, .service-section, .section-divider, .testimonials, .faq, .form, .map-section {
+.about, 
+.section-divider, 
+.testimonials, 
+.faq, 
+.form, 
+.map-section {
   opacity: 0;
   transform: translateY(40px);
   transition: all 0.8s ease;
   will-change: transform, opacity;
 }
 .about.visible,
-.service-section.visible,
 .section-divider.visible,
 .testimonials.visible,
 .faq.visible,
@@ -52,6 +56,24 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Service sections נכנסים מהצדדים */
+.service-section {
+  padding: 100px 20px;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-light);
+  opacity: 0;
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  will-change: transform, opacity;
+}
+.service-section:nth-of-type(odd) { transform: translateX(60px); }
+.service-section:nth-of-type(even) { transform: translateX(-60px); }
+.service-section.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* Testimonials cards delay */
 .testimonials.visible .testimonial:nth-child(1) { transition-delay: 0.2s; }
 .testimonials.visible .testimonial:nth-child(2) { transition-delay: 0.4s; }
@@ -202,17 +224,6 @@ header h1 {
 }
 
 /* -------------------- SERVICES -------------------- */
-.service-section {
-  padding: 100px 20px;
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-light);
-  transition: opacity 1.2s ease, transform 1.2s ease;
-}
-.service-section:nth-of-type(odd) { transform: translateX(60px); }
-.service-section:nth-of-type(even) { transform: translateX(-60px); }
-.service-section.visible { transform: translateX(0); }
-
 .service-content {
   max-width: 1200px;
   margin: 0 auto;
@@ -221,7 +232,6 @@ header h1 {
   gap: 40px; /* הקטן את הרווח בין תמונה לטקסט */
   align-items: center;
 }
-
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -236,7 +246,7 @@ header h1 {
   text-decoration: none;
   box-shadow: var(--shadow-md);
   transition: all 0.3s ease;
-  white-space: nowrap; /* 👈 שומר את הטקסט בשורה אחת */
+  white-space: nowrap;
 }
 .btn-primary:hover {
   transform: translateY(-3px);
@@ -255,10 +265,9 @@ header h1 {
 .service-image:hover { transform: scale(1.02); }
 .service-image img {
   width: 100%;
-  height: 450px;   /* 👈 הגדלנו טיפה את הגובה */
+  height: 450px;
   object-fit: cover;
 }
-
 .placeholder-image {
   width: 100%;
   height: 400px;
@@ -293,17 +302,17 @@ header h1 {
     rgba(248, 249, 250, 0.8) 100%);
 }
 
-/* -------- התאמות למסכים קטנים (כמו אייפון) -------- */
+/* -------- התאמות למסכים קטנים -------- */
 @media (max-width: 768px) {
   .service-content {
-    grid-template-columns: 1fr; /* טקסט ותמונה אחד מתחת לשני */
+    grid-template-columns: 1fr;
     gap: 30px;
   }
   .service-image {
-    order: -1; /* 👈 תמיד תופיע לפני הטקסט */
+    order: -1;
   }
   .service-image img {
-    height: 300px; /* פחות גובה במסכים קטנים */
+    height: 300px;
   }
 }
 

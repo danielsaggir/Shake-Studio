@@ -5,13 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
     rootMargin: '0px 0px -50px 0px'
   };
 
-  const observer = new IntersectionObserver((entries, obs) => {
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         requestAnimationFrame(() => {
           entry.target.classList.add('visible');
         });
-        obs.unobserve(entry.target); // משחרר אחרי הפעלה 🚀
+      } else {
+        entry.target.classList.remove('visible');
       }
     });
   }, observerOptions);
