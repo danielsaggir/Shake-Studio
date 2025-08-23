@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Scroll animations
   const observerOptions = {
-    threshold: 0.2, // מתי להפעיל את האנימציה (20% מהאלמנט במסך)
+    threshold: 0.2,
     rootMargin: '0px 0px -50px 0px'
   };
 
@@ -20,6 +20,22 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(
     '.about, .service-section, .section-divider, .testimonials, .faq, .form, .map-section'
   ).forEach(section => observer.observe(section));
+
+  // ✅ WhatsApp button toggle
+  const whatsapp = document.querySelector(".whatsapp-wrapper");
+  const header = document.querySelector("header");
+
+  function toggleWhatsApp() {
+    const headerBottom = header.offsetTop + header.offsetHeight;
+    if (window.scrollY > headerBottom - 100) {
+      whatsapp.classList.remove("hidden");
+    } else {
+      whatsapp.classList.add("hidden");
+    }
+  }
+
+  window.addEventListener("scroll", toggleWhatsApp);
+  toggleWhatsApp(); // קריאה ראשונה
 
   // FAQ Accordion
   document.querySelectorAll('.faq-question').forEach(button => {
@@ -91,7 +107,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Add lazy loading to all images
+  // Lazy loading for all images
   const images = document.querySelectorAll('img');
   images.forEach(img => {
     if (!img.hasAttribute('loading')) {
