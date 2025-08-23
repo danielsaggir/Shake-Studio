@@ -223,6 +223,20 @@ header h1 {
   cursor: pointer;
 }
 
+@media (max-width: 480px) {
+  .hero-badge {
+    bottom: 80px;   /* 👈 יישב יותר קרוב לחץ */
+    font-size: 1rem; /* 👈 טקסט קטן יותר */
+    padding: 10px 18px;
+  }
+
+  .scroll-indicator {
+    bottom: 20px;   /* 👈 טיפה למטה */
+    font-size: 1.6rem; /* 👈 קטן יותר במסכים קטנים */
+  }
+}
+
+
 /* אנימציה של קפיצה עדינה */
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
