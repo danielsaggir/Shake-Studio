@@ -23,11 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ✅ WhatsApp button toggle
   const whatsapp = document.querySelector(".whatsapp-wrapper");
-  const header = document.querySelector("header");
 
   function toggleWhatsApp() {
-    const headerBottom = header.offsetTop + header.offsetHeight;
-    if (window.scrollY > headerBottom - 100) {
+    if (window.scrollY > 0) { 
       whatsapp.classList.remove("hidden");
     } else {
       whatsapp.classList.add("hidden");
