@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח...';
     submitButton.disabled = true;
 
-    fetch("https://formsubmit.co/ajax/danielsaggir@gmail.com", {
+    fetch("https://formsubmit.co/ajax/shay482@gmail.com", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
