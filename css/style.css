@@ -148,11 +148,8 @@ body {
 }
 
 /* -------------------- HEADER / HERO -------------------- */
-/* -------------------- HEADER / HERO -------------------- */
-/* -------------------- HEADER / HERO -------------------- */
 header {
-  min-height: 100vh;
-  min-height: 100dvh;
+  min-height: 100vh;   /* מחשב רגיל */
   background: linear-gradient(135deg, rgba(32, 178, 170, 0.9), rgba(23, 161, 153, 0.8)), 
               url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23e0f7f6" width="1200" height="800"/><g opacity="0.1"><circle cx="200" cy="200" r="80" fill="%2320b2aa"/><circle cx="800" cy="300" r="60" fill="%2317a199"/><circle cx="400" cy="600" r="70" fill="%2325d5cb"/><circle cx="1000" cy="150" r="50" fill="%2320b2aa"/></g></svg>');
   background-size: cover;
@@ -160,7 +157,7 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: center;   /* מחשב = במרכז */
   text-align: center;
   color: white;
   position: relative;
@@ -198,7 +195,7 @@ header h1 {
 
 .hero-badge {
   position: absolute;
-  bottom: 80px;          /* במחשב: קצת מעל החץ */
+  bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   font-size: clamp(1rem, 2.5vw, 1.4rem);
@@ -214,7 +211,7 @@ header h1 {
 
 .scroll-indicator {
   position: absolute;
-  bottom: 20px;   /* נשאר קבוע בתחתית */
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 1.8s infinite ease-in-out;
@@ -223,10 +220,12 @@ header h1 {
   cursor: pointer;
 }
 
-/* -------------------- מובייל – קומפקטי יותר -------------------- */
+/* -------------------- מובייל / iPhone -------------------- */
 @media (max-width: 600px) {
   header {
-    padding: 40px 20px 100px; /* קצת פחות padding מלמטה */
+    min-height: 100svh;   /* 👈 תיקון מיוחד ל-Safari/iPhone */
+    justify-content: flex-start; /* לא באמצע – נתחיל מלמעלה */
+    padding: 80px 20px 160px; /* יותר רווחים למטה */
   }
 
   .logo-container img {
@@ -234,15 +233,15 @@ header h1 {
   }
 
   header h1 {
-    font-size: 1.2rem;     /* כותרת קטנה יותר */
-    margin-bottom: 0.6rem; /* פחות רווח מתחתיה */
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
   }
 
   .hero-badge {
-    bottom: 60px;          /* מתקרב יותר לחץ */
-    font-size: 0.85rem;
-    padding: 7px 14px;
-    border-radius: 25px;
+    bottom: 70px; /* קרוב יותר לחץ */
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 30px;
   }
 
   .scroll-indicator {
