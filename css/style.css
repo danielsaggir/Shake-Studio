@@ -214,13 +214,13 @@ header h1 {
 
 /* -------------------- מובייל -------------------- */
 @media (max-width: 600px) {
-  header.hero {
-    min-height: 100svh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;   /* 👈 דוחף את כל הטקסט + כפתור למטה */
-    padding: 40px 20px 100px;    /* מרווח מהתחתית */
-  }
+header.hero {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 10vh 20px 15vh; /* 👈 למטה יותר, לפי גובה מסך */
+}
 
   .logo-container img {
     width: 260px;
