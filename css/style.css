@@ -218,8 +218,9 @@ header.hero {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding: 5vh; /* 👈 יותר נמוך – במקום 10vh שמתי 25vh */
+  justify-content: flex-end;  /* הכל יורד לתחתית */
+  padding-bottom: 2vh;        /* 👈 המרחק מהתחתית */
+  text-align: center;
 }
 
 .logo-container img {
