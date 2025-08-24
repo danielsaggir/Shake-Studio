@@ -219,24 +219,25 @@ header.hero {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 5vh 10px 10vh; /* 👈 למטה יותר, לפי גובה מסך */
+  padding: 5vh 10px 25vh; /* 👈 יותר נמוך – במקום 10vh שמתי 25vh */
 }
 
-  .logo-container img {
-    width: 260px;
-  }
+.logo-container img {
+  width: 260px;
+}
 
-  header h1 {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-  }
+header h1 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+}
 
-  .hero-badge {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-    border-radius: 30px;
-    margin-bottom: 5px;  /* רווח לפני החץ */
-  }
+.hero-badge {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  border-radius: 30px;
+  margin-bottom: 10px;  /* טיפה רווח קטן מהחץ */
+}
+
 
 
   .scroll-indicator { bottom: 15px; font-size: 1.5rem; }
