@@ -225,6 +225,7 @@ header.hero {
 
 .logo-container img {
   width: 260px;
+  margin-top:30vh;
 }
 
 header h1 {
@@ -236,7 +237,7 @@ header h1 {
   font-size: 0.9rem;
   padding: 8px 16px;
   border-radius: 30px;
-  margin-bottom: 2vh;  /* טיפה רווח קטן מהחץ */
+  margin-bottom: 4vh;  /* טיפה רווח קטן מהחץ */
 }
 
 
