@@ -215,7 +215,7 @@ header h1 {
 /* -------------------- מובייל -------------------- */
 @media (max-width: 600px) {
   header.hero {
-  min-height: 100svh; 
+  min-height: 10svh; 
   justify-content: flex-start;
   padding: 80px 20px 200px; /* עוד קצת מרווח למטה */
 }
