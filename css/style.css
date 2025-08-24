@@ -230,7 +230,7 @@ header h1 {
 }
 
 .hero-badge {
-  bottom: 120px !important;  /* מחליף לגמרי את הישן */
+  bottom: 10px !important;  /* מחליף לגמרי את הישן */
   font-size: 0.9rem;
   padding: 8px 16px;
   border-radius: 30px;
