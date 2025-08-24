@@ -215,26 +215,28 @@ header h1 {
 /* -------------------- מובייל -------------------- */
 @media (max-width: 600px) {
   header.hero {
-  min-height: 10svh; 
-  justify-content: flex-start;
-  padding: 80px 20px 200px; /* עוד קצת מרווח למטה */
-}
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;   /* 👈 דוחף את כל הטקסט + כפתור למטה */
+    padding: 40px 20px 100px;    /* מרווח מהתחתית */
+  }
 
-.logo-container img { 
-  width: 260px; 
-}
+  .logo-container img {
+    width: 260px;
+  }
 
-header h1 { 
-  font-size: 1.2rem; 
-  margin-bottom: 0.8rem; 
-}
+  header h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+  }
 
-.hero-badge {
-  bottom: 10px !important;  /* מחליף לגמרי את הישן */
-  font-size: 0.9rem;
-  padding: 8px 16px;
-  border-radius: 30px;
-}
+  .hero-badge {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+    border-radius: 30px;
+    margin-bottom: 20px;  /* רווח לפני החץ */
+  }
 
 
   .scroll-indicator { bottom: 15px; font-size: 1.5rem; }
