@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ווידאו כרקע
-  const video = document.querySelector('.hero-video'); // ✅ תוקן - היה hero-video-bg
+  const video = document.querySelector('.hero-video'); 
   if (video) {
+    video.muted = true; // מבטיח שלא יחסם
     video.play().catch(() => {
       console.warn("Autoplay נחסם, המשתמש צריך ללחוץ");
     });
@@ -12,17 +13,13 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("✅ WhatsApp script loaded");
   if (whatsapp) {
     function toggleWhatsApp() {
-      if (window.scrollY > 50) {           // אחרי 50px גלילה
+      if (window.scrollY > 50) {           
         whatsapp.classList.add("show");
       } else {
-        whatsapp.classList.remove("show"); // חוזר להיעלם למעלה
+        whatsapp.classList.remove("show"); 
       }
     }
-
-    // מאזין לגלילה
     window.addEventListener("scroll", toggleWhatsApp);
-
-    // קביעה ראשונית
     toggleWhatsApp();
   }
 
@@ -63,6 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (contactForm) {
     contactForm.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      // 🕵️ בדיקת honeypot נגד בוטים
+      if (this.querySelector('[name="website"]')?.value !== "") {
+        console.warn("Bot detected, form blocked");
+        return;
+      }
 
       const formData = {
         name: this.querySelector('[name="name"]').value,
@@ -144,13 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Phone number validation
+  // Phone number validation (רק ספרות, לא מוסיף מקף)
   const phoneInput = document.querySelector('input[type="tel"]');
   if (phoneInput) {
     phoneInput.addEventListener('input', function(e) {
       let value = e.target.value.replace(/\D/g, '');
       if (value.length > 10) value = value.substr(0, 10);
-      if (value.length >= 6) value = value.substr(0, 3) + '-' + value.substr(3);
       e.target.value = value;
     });
   }
