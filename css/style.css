@@ -224,7 +224,7 @@ header.hero {
 }
 .logo-container img {
   width: 260px;
-  transform: translateY(-20vh); /* מעלה למעלה */
+  transform: translateY(-32vh); /* מעלה למעלה */
 }
 
 header h1 {
