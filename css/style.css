@@ -235,7 +235,7 @@ header h1 {
   font-size: 0.9rem;
   padding: 8px 16px;
   border-radius: 30px;
-  margin-bottom: 10px;  /* טיפה רווח קטן מהחץ */
+  margin-bottom: 2vh;  /* טיפה רווח קטן מהחץ */
 }
 
 
