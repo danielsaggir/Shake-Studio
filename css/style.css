@@ -219,7 +219,7 @@ header.hero {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 10vh 20px 15vh; /* 👈 למטה יותר, לפי גובה מסך */
+  padding: 5vh 10px 10vh; /* 👈 למטה יותר, לפי גובה מסך */
 }
 
   .logo-container img {
