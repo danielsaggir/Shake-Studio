@@ -222,10 +222,9 @@ header.hero {
   padding-bottom: 5vh;        /* 👈 המרחק מהתחתית */
   text-align: center;
 }
-
 .logo-container img {
   width: 260px;
-  margin-top:30vh;
+  transform: translateY(-20vh); /* מעלה למעלה */
 }
 
 header h1 {
