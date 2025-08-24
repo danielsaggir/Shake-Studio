@@ -27,7 +27,8 @@
   <meta name="twitter:description" content="סטודיו אינטימי ומקצועי עם פילאטיס מכשירים, קבוצות קטנות ומדריכות מוסמכות" />
 
   <!-- CSS + אייקונים -->
-  <link rel="stylesheet" href="https://shakestudio.fit/css/style.css" />
+<link rel="stylesheet" href="css/style.css" />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -35,31 +36,33 @@
   <link rel="icon" href="https://shakestudio.fit/Images/favicon.ico" type="image/x-icon">
 </head>
 
-
 <body>
-<!-- WhatsApp Floating Button with Text -->
-<div class="whatsapp-wrapper">
-  <a href="https://wa.me/972529577079?text=%D7%94%D7%99%D7%99%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%90%D7%9C%D7%99%D7%99%D7%9A%20%D7%93%D7%A8%D7%9A%20%D7%94%D7%90%D7%AA%D7%A8%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A4%D7%A8%D7%98%D7%99%D7%9D%20%D7%A0%D7%95%D7%A1%D7%A4%D7%99%D7%9D" 
-     target="_blank" 
-     class="whatsapp-link">
-    <div class="whatsapp-float">
-      <i class="fab fa-whatsapp"></i>
-    </div>
-    <div class="whatsapp-text">השאירו לנו הודעה</div>
-  </a>
-</div>
+<header id="home" class="hero">
+  <!-- וידאו כרקע -->
+  <video autoplay muted loop playsinline preload="auto"
+         poster="Images/videos/poster.jpg"
+         class="hero-video">
+<source src="Images/videos/shakestudio-small.mp4" type="video/mp4">
+    הדפדפן שלך לא תומך בווידאו
+  </video>
 
+  <!-- שכבת כהות -->
+  <div class="overlay"></div>
 
-
-
-  <header id="home">
+  <!-- התוכן -->
+  <div class="hero-content">
     <div class="logo-container">
       <img src="./Images/ShakeStudioLogo.png" alt="Shake Studio - Pilates & Barre" />
     </div>
     <h1>סוף סוף מצאת אותנו!</h1>
-    <p class="hero-badge"> קצת עלינו</p>
-    <div class="scroll-indicator" aria-label="גלול למטה">↓</div>
-  </header>
+    <p class="hero-badge">קצת עלינו</p>
+    <div class="scroll-indicator">↓</div>
+  </div>
+</header>
+
+
+
+
 
   <section class="about">
     <div class="container">
@@ -73,7 +76,8 @@
   <section class="service-section">
     <div class="service-content">
       <div class="service-text">
-        <span class="service-icon"><i class="fas fa-dumbbell"></i></span>
+        <span class="service-icon"><i class="fas fa-heart"></i></span>
+
         <h3>פילאטיס מכשירים</h3>
         <p>אנחנו מאמינות שאימון טוב הוא כזה שלא חוזר על עצמו. בכל שיעור אנחנו בונות מערך חדש, דינמי, מפתיע ושונה שמורכב מהעולמות שכל מאמנת מביאה איתה.</p>
         <p>מתאים לכל הרמות - ממתחילים ועד מתקדמים. האימון מתבצע בקבוצות קטנות עם ליווי אישי.</p>
@@ -95,7 +99,8 @@
         <img src="Images/gallery/DSC08233.jpg" alt="אימון כוח" loading="lazy" />
       </div>
       <div class="service-text">
-        <span class="service-icon"><i class="fas fa-heartbeat"></i></span>
+                <span class="service-icon"><i class="fas fa-dumbbell"></i></span>
+
         <h3>אימוני כוח</h3>
         <p>זה לא ״עוד אימון״. כל סט, כל תרגיל, כל מערך - מתוכנן לעומק.</p>
         <p>אצלנו דוגלים בעבודה מקצועית, מודרכת ובעיקר אינטנסיבית בליווי צמוד של מאמנת מוסמכת. האימונים משולבים בעבודה עם ציוד מקצועי בשיטות אימון מוכרות בעולם הכוח - Emom, Amrap, עבודה בזוגות, תחנות.</p>
@@ -112,7 +117,7 @@
   <section class="service-section">
     <div class="service-content">
       <div class="service-text">
-        <span class="service-icon"><i class="fas fa-running"></i></span>
+        <span class="service-icon"><i class="fas fa-heartbeat"></i></span>
         <h3>אימון כוח משולב ופילאטיס מכשירים</h3>
         <p>האימון המשולב שלנו מחלק 50 דק׳ בצורה מושלמת. האימון מתחלק לשני חלקים משלימים, תחנות כוח ופילאטיס מכשירים. בתחנות כוח כל מתאמנת עובדת עם משקולות, קטלבל, פולי ו - TRX.</p>
         <p>כל תחנה מתמקדת בקבוצים שרירים אחרת, מחזקת, מחטבת ומגבירה סיבולת. לאחר מכן החלק השני הינו פילאטיס מכשירים, שבו העבודה יותר מדויקת - חיזוק השרירים העמוקים, שיפור יציבה, גמישות ושליטה מלאה בתנועה. השילוב הזה יוצר אימון שלם, מאוזן ומאתגר שנותן הזדמנות לחוות את שני העולמות באימון אחד.</p>
@@ -131,7 +136,6 @@
     </div>
   </section>
 
-
 <!-- Service 4: Spinning Training -->
 <section class="service-section">
   <div class="service-content">
@@ -143,7 +147,7 @@
       </div>
     </div>
     <div class="service-text">
-      <span class="service-icon"><i class="fas fa-running"></i></span>
+      <span class="service-icon"><i class="fas fa-bicycle"></i></span>
       <h3>אימון ספינינג</h3>
       <p>שיעורי הספינינג שלנו הם הרבה יותר מאימון על אופניים - הם חוויה אינטנסיבית שמחברת אירובי עוצמתי עם אימוני כח.</p>
       <p>כל שיעור משלב קטעי ספינינג שמעלים את הדופק עם תחנות כוח - העבודה מתבצעת עם משקולות, קטלבל, פולי, ותרגילים מהעולם הפונקציונאלי - כך שהגוף עובד מכל הכיוונים, השרירים מחוזקים והאנרגיה לא פוסקת.</p>
@@ -154,7 +158,6 @@
     </div>
   </div>
 </section>
-
 
   <!-- Testimonials Section -->
   <section class="testimonials">
@@ -283,12 +286,11 @@
         allowfullscreen="" 
         loading="lazy" 
         referrerpolicy="no-referrer-when-downgrade"
-        title="מיקום הסטודיו - Shake Studio">
+        title="מיקום הסטודיو - Shake Studio">
       </iframe>
     </div>
   </div>
 </section>
-
 
   <footer>
     <div class="footer-content">
@@ -313,5 +315,18 @@
   </footer>
 
   <script src="js/script.js"></script>
+
+  <!-- WhatsApp Floating Button with Text -->
+<div class="whatsapp-wrapper">
+  <a href="https://wa.me/972529577079?text=היי%20הגעתי%20דרך%20האתר,%20אשמח%20לשמוע%20פרטים%20נוספים"
+     target="_blank" 
+     class="whatsapp-link">
+    <div class="whatsapp-float">
+      <i class="fab fa-whatsapp"></i>
+    </div>
+    <div class="whatsapp-text">השאירו לנו הודעה</div>
+  </a>
+</div>
+
 </body>
 </html>

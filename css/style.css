@@ -7,6 +7,8 @@
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  min-height: 100%;           /* ✅ במקום height: 100% */
+  background: #f8fffe;
 }
 
 /* -------------------- VARIABLES -------------------- */
@@ -16,7 +18,7 @@ html, body {
   --accent-color: #25d5cb;    /* טורקיז בהיר */
   --text-dark: #2c3e50;
   --text-light: #555;
-  --bg-light: #f8fffe;        /* רקע עם נגיעה של טורקיז */
+  --bg-light: #f8fffe;        /* רקע בהיר */
   --white: #ffffff;
   --shadow-sm: 0 2px 10px rgba(32, 178, 170, 0.1);
   --shadow-md: 0 10px 30px rgba(32, 178, 170, 0.15);
@@ -28,6 +30,7 @@ body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   color: var(--text-dark);
+  background: #f8fffe; 
 }
 .container {
   max-width: 1200px;
@@ -35,69 +38,21 @@ body {
   padding: 0 20px;
 }
 
-/* -------------------- SCROLL ANIMATIONS -------------------- */
-.about, 
-.section-divider, 
-.testimonials, 
-.faq, 
-.form, 
-.map-section {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
-  will-change: transform, opacity;
-}
-.about.visible,
-.section-divider.visible,
-.testimonials.visible,
-.faq.visible,
-.form.visible,
-.map-section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Service sections נכנסים מהצדדים */
-.service-section {
-  padding: 100px 20px;
-  position: relative;
-  overflow: hidden;
-  background: var(--bg-light);
-  opacity: 0;
-  transition: opacity 1.2s ease, transform 1.2s ease;
-  will-change: transform, opacity;
-}
-.service-section:nth-of-type(odd) { transform: translateX(60px); }
-.service-section:nth-of-type(even) { transform: translateX(-60px); }
-.service-section.visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Testimonials cards delay */
-.testimonials.visible .testimonial:nth-child(1) { transition-delay: 0.2s; }
-.testimonials.visible .testimonial:nth-child(2) { transition-delay: 0.4s; }
-.testimonials.visible .testimonial:nth-child(3) { transition-delay: 0.6s; }
-
-/* -------------------- WHATSAPP FLOATING BUTTON -------------------- */
+/* -------------------- WHATSAPP -------------------- */
 .whatsapp-wrapper {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 1000;
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 0.5s ease;
-}
-
-/* מצב מוסתר – כשהעמוד בראש */
-.whatsapp-wrapper.hidden {
+  bottom: 20px;
+  right: 20px;
+  z-index: 999999 !important;  /* 👈 תמיד מעל כולם */
   opacity: 0;
   pointer-events: none;
-  transform: translateY(50px); /* החלקה החוצה */
+  overflow: visible;
+  transition: opacity 0.3s ease;
+}
+
+.whatsapp-wrapper.show {
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
 
 .whatsapp-link {
@@ -124,15 +79,9 @@ body {
 }
 
 @keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
-  }
-  70% {
-    box-shadow: 0 0 0 20px rgba(37, 211, 102, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-  }
+  0%   { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+  70%  { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
 }
 
 .whatsapp-text {
@@ -163,57 +112,72 @@ body {
 }
 
 /* -------------------- HEADER / HERO -------------------- */
-header {
-  min-height: 100vh;   /* מחשב רגיל */
-  background: linear-gradient(135deg, rgba(32, 178, 170, 0.9), rgba(23, 161, 153, 0.8)), 
-              url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%23e0f7f6" width="1200" height="800"/><g opacity="0.1"><circle cx="200" cy="200" r="80" fill="%2320b2aa"/><circle cx="800" cy="300" r="60" fill="%2317a199"/><circle cx="400" cy="600" r="70" fill="%2325d5cb"/><circle cx="1000" cy="150" r="50" fill="%2320b2aa"/></g></svg>');
-  background-size: cover;
-  background-position: center;
+header.hero {
+  min-height: 100vh;
+  position: relative;
+  background: #000; /* fallback */
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;   /* מחשב = במרכז */
+  justify-content: center;
   text-align: center;
   color: white;
-  position: relative;
-  padding: 60px 20px 140px;
+  overflow: visible !important; /* ✅ שלא יחתוך כפתורים */
 }
 
-header::before {
-  content: '';
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+/* ✅ שכבת כהות */
+.overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 40%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
-}
-
-.logo-container {
-  margin-bottom: 2rem;
-  animation: fadeInUp 0.8s ease-out;
+  background: rgba(0,0,0,0.3);
   z-index: 1;
 }
 
+/* תוכן מעל */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 1rem;
+  background: transparent !important;
+}
+
+.logo-container {
+  margin-bottom: 1rem;
+  animation: fadeInUp 0.8s ease-out;
+}
 .logo-container img {
-  width: 500px;
+  width: 600px;
   height: auto;
   filter: brightness(0) invert(1);
 }
 
 header h1 {
-  font-size: clamp(1rem, 2.5vw, 1.8rem); 
+  font-size: clamp(1rem, 2.5vw, 1.8rem);
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.25);
   animation: fadeInUp 1s ease-out;
-  z-index: 1;
-  position: relative;
 }
 
 .hero-badge {
-  position: absolute;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
+  font-size: clamp(0.8rem, 2vw, 1rem);
   background: linear-gradient(45deg, #fff, rgba(255,255,255,0.9));
   color: var(--primary-color);
   padding: 12px 24px;
@@ -222,60 +186,48 @@ header h1 {
   animation: fadeInUp 1s ease-out 0.3s both;
   box-shadow: 0 6px 20px rgba(32, 178, 170, 0.2);
   z-index: 2;
+  margin-top: 0.5rem;
 }
 
 .scroll-indicator {
-  position: absolute;
-  bottom: 20px;
+  position: fixed;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   animation: bounce 1.8s infinite ease-in-out;
   color: white;
   font-size: 2rem;
   cursor: pointer;
+  z-index: 10;
 }
 
-/* -------------------- מובייל / iPhone -------------------- */
+/* אנימציות */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes bounce {
+  0%,20%,50%,80%,100% { transform: translateX(-50%) translateY(0); }
+  40% { transform: translateX(-50%) translateY(-12px); }
+  60% { transform: translateX(-50%) translateY(-6px); }
+}
+
+/* -------------------- מובייל -------------------- */
 @media (max-width: 600px) {
-  header {
-    min-height: 100svh;   /* 👈 תיקון מיוחד ל-Safari/iPhone */
-    justify-content: flex-start; /* לא באמצע – נתחיל מלמעלה */
-    padding: 80px 20px 160px; /* יותר רווחים למטה */
+  header.hero {
+    min-height: 100svh; 
+    justify-content: flex-start;
+    padding: 80px 20px 160px;
   }
-
-  .logo-container img {
-    width: 260px;
-  }
-
-  header h1 {
-    font-size: 1.2rem;
-    margin-bottom: 0.8rem;
-  }
-
+  .logo-container img { width: 260px; }
+  header h1 { font-size: 1.2rem; margin-bottom: 0.8rem; }
   .hero-badge {
-    bottom: 70px; /* קרוב יותר לחץ */
+    bottom: 70px;
     font-size: 0.9rem;
     padding: 8px 16px;
     border-radius: 30px;
   }
-
-  .scroll-indicator {
-    bottom: 15px;
-    font-size: 1.5rem;
-  }
-}
-
-/* -------------------- bounce -------------------- */
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  40% {
-    transform: translateX(-50%) translateY(-12px);
-  }
-  60% {
-    transform: translateX(-50%) translateY(-6px);
-  }
+  .scroll-indicator { bottom: 15px; font-size: 1.5rem; }
 }
 
 /* -------------------- ABOUT -------------------- */
@@ -298,16 +250,39 @@ header h1 {
   color: var(--text-light);
 }
 
+/* -------------------- SCROLL ANIMATIONS -------------------- */
+.about,
+.service-section,
+.section-divider,
+.testimonials,
+.faq,
+.form,
+.map-section {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 1s ease;
+}
+
+.about.visible,
+.service-section.visible,
+.section-divider.visible,
+.testimonials.visible,
+.faq.visible,
+.form.visible,
+.map-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* -------------------- SERVICES -------------------- */
 .service-content {
   max-width: 1200px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 40px; /* רווח בין תמונה לטקסט */
+  gap: 40px;
   align-items: center;
 }
-
 .btn-primary {
   display: inline-flex;
   align-items: center;
@@ -324,19 +299,12 @@ header h1 {
   transition: all 0.3s ease;
   white-space: nowrap;
 }
-
 .btn-primary:hover {
   transform: translateY(-3px);
   box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
 }
-
-.btn-primary i {
-  transition: transform 0.3s ease;
-}
-
-.btn-primary:hover i {
-  transform: translateX(-5px);
-}
+.btn-primary i { transition: transform 0.3s ease; }
+.btn-primary:hover i { transform: translateX(-5px); }
 
 .service-image {
   position: relative;
@@ -345,56 +313,28 @@ header h1 {
   box-shadow: var(--shadow-lg);
   transition: transform 0.3s ease;
 }
-
-.service-image:hover {
-  transform: scale(1.02);
-}
-
+.service-image:hover { transform: scale(1.02); }
 .service-image img {
   width: 100%;
-  height: 450px;
+  height: 50vh;
   object-fit: cover;
 }
 
-.placeholder-image {
-  width: 100%;
-  height: 400px;
-  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  color: white;
-  font-size: 1.5rem;
-  text-align: center;
-  gap: 20px;
+/* -------------------- SCROLL ANIMATIONS -------------------- */
+.service-section {
+  padding: 100px 20px;
+  position: relative;
+  overflow: visible !important; /* ✅ שלא יחתוך את הכפתור */
+  background: var(--bg-light);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+  opacity: 0;
 }
-
-/* -------------------- SERVICE ICON -------------------- */
-.service-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 70px;   /* גודל העיגול */
-  height: 70px;
-  border-radius: 50%;
-  background: var(--bg-light); /* רקע עדין */
-  box-shadow: var(--shadow-sm);
-  margin-bottom: 20px;
+.service-section:nth-of-type(odd) { transform: translateX(60px); }
+.service-section:nth-of-type(even) { transform: translateX(-60px); }
+.service-section.visible {
+  transform: translateX(0);
+  opacity: 1;
 }
-
-.service-icon i {
-  font-size: 2rem; /* גודל האייקון */
-  color: var(--primary-color);
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.service-icon:hover i {
-  transform: scale(1.2);
-  color: var(--secondary-color);
-}
-
 
 /* -------------------- SECTION DIVIDER -------------------- */
 .section-divider {
@@ -417,16 +357,9 @@ header h1 {
 
 /* -------- התאמות למסכים קטנים -------- */
 @media (max-width: 768px) {
-  .service-content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  .service-image {
-    order: -1;
-  }
-  .service-image img {
-    height: 300px;
-  }
+  .service-content { grid-template-columns: 1fr; gap: 30px; }
+  .service-image { order: -1; }
+  .service-image img { height: 300px; }
 }
 
 /* -------------------- TESTIMONIALS -------------------- */
@@ -619,5 +552,4 @@ footer {
   align-items: center;
   justify-content: center;
   color: white;
-  text-decoration: none;
 }

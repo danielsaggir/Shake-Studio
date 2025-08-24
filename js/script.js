@@ -1,4 +1,31 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // ווידאו כרקע
+  const video = document.querySelector('.hero-video'); // ✅ תוקן - היה hero-video-bg
+  if (video) {
+    video.play().catch(() => {
+      console.warn("Autoplay נחסם, המשתמש צריך ללחוץ");
+    });
+  }
+
+  // כפתור וואטסאפ
+  const whatsapp = document.querySelector(".whatsapp-wrapper");
+  console.log("✅ WhatsApp script loaded");
+  if (whatsapp) {
+    function toggleWhatsApp() {
+      if (window.scrollY > 50) {           // אחרי 50px גלילה
+        whatsapp.classList.add("show");
+      } else {
+        whatsapp.classList.remove("show"); // חוזר להיעלם למעלה
+      }
+    }
+
+    // מאזין לגלילה
+    window.addEventListener("scroll", toggleWhatsApp);
+
+    // קביעה ראשונית
+    toggleWhatsApp();
+  }
+
   // Scroll animations
   const observerOptions = {
     threshold: 0.2,
@@ -21,20 +48,6 @@ document.addEventListener("DOMContentLoaded", () => {
     '.about, .service-section, .section-divider, .testimonials, .faq, .form, .map-section'
   ).forEach(section => observer.observe(section));
 
-  // ✅ WhatsApp button toggle
-  const whatsapp = document.querySelector(".whatsapp-wrapper");
-
-  function toggleWhatsApp() {
-    if (window.scrollY > 0) { 
-      whatsapp.classList.remove("hidden");
-    } else {
-      whatsapp.classList.add("hidden");
-    }
-  }
-
-  window.addEventListener("scroll", toggleWhatsApp);
-  toggleWhatsApp(); // קריאה ראשונה
-
   // FAQ Accordion
   document.querySelectorAll('.faq-question').forEach(button => {
     button.addEventListener('click', () => {
@@ -46,68 +59,73 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Form submission
-  document.getElementById("contactForm").addEventListener("submit", function (e) {
-    e.preventDefault();
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    const formData = {
-      name: document.querySelector('[name="name"]').value,
-      phone: document.querySelector('[name="phone"]').value,
-      email: document.querySelector('[name="email"]').value,
-      message: document.querySelector('[name="message"]').value
-    };
+      const formData = {
+        name: this.querySelector('[name="name"]').value,
+        phone: this.querySelector('[name="phone"]').value,
+        email: this.querySelector('[name="email"]').value,
+        message: this.querySelector('[name="message"]').value
+      };
 
-    const submitButton = this.querySelector('button[type="submit"]');
-    const originalContent = submitButton.innerHTML;
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח...';
-    submitButton.disabled = true;
+      const submitButton = this.querySelector('button[type="submit"]');
+      const originalContent = submitButton.innerHTML;
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> שולח...';
+      submitButton.disabled = true;
 
-    fetch("https://formsubmit.co/ajax/shay482@gmail.com", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify(formData)
-    })
-    .then(response => {
-      if (response.ok) {
+      fetch("https://formsubmit.co/ajax/shay482@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => {
+        if (response.ok) {
+          Swal.fire({
+            title: 'תודה!',
+            text: 'הטופס נשלח בהצלחה, נחזור אליכם בקרוב',
+            icon: 'success',
+            confirmButtonText: 'סגור',
+            confirmButtonColor: '#667eea'
+          });
+          contactForm.reset();
+        } else {
+          throw new Error('Form submission failed');
+        }
+      })
+      .catch(() => {
         Swal.fire({
-          title: 'תודה!',
-          text: 'הטופס נשלח בהצלחה, נחזור אליכם בקרוב',
-          icon: 'success',
+          title: 'שגיאה',
+          text: 'אירעה שגיאה בשליחה, נסו שוב או צרו קשר בוואטסאפ',
+          icon: 'error',
           confirmButtonText: 'סגור',
           confirmButtonColor: '#667eea'
         });
-        document.getElementById("contactForm").reset();
-      } else {
-        throw new Error('Form submission failed');
-      }
-    })
-    .catch(() => {
-      Swal.fire({
-        title: 'שגיאה',
-        text: 'אירעה שגיאה בשליחה, נסו שוב או צרו קשר בוואטסאפ',
-        icon: 'error',
-        confirmButtonText: 'סגור',
-        confirmButtonColor: '#667eea'
+      })
+      .finally(() => {
+        submitButton.innerHTML = originalContent;
+        submitButton.disabled = false;
       });
-    })
-    .finally(() => {
-      submitButton.innerHTML = originalContent;
-      submitButton.disabled = false;
     });
-  });
+  }
 
   // Smooth scrolling for scroll indicator
-  document.querySelector('.scroll-indicator').addEventListener('click', () => {
-    document.querySelector('.about').scrollIntoView({
-      behavior: 'smooth'
+  const scrollIndicator = document.querySelector('.scroll-indicator');
+  if (scrollIndicator) {
+    scrollIndicator.addEventListener('click', () => {
+      document.querySelector('.about')?.scrollIntoView({
+        behavior: 'smooth'
+      });
     });
-  });
+  }
 
   // Lazy loading for all images
-  const images = document.querySelectorAll('img');
-  images.forEach(img => {
+  document.querySelectorAll('img').forEach(img => {
     if (!img.hasAttribute('loading')) {
       img.setAttribute('loading', 'lazy');
     }
@@ -128,12 +146,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Phone number validation
   const phoneInput = document.querySelector('input[type="tel"]');
-  phoneInput.addEventListener('input', function(e) {
-    let value = e.target.value.replace(/\D/g, '');
-    if (value.length > 10) value = value.substr(0, 10);
-    if (value.length >= 6) value = value.substr(0, 3) + '-' + value.substr(3);
-    e.target.value = value;
-  });
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function(e) {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 10) value = value.substr(0, 10);
+      if (value.length >= 6) value = value.substr(0, 3) + '-' + value.substr(3);
+      e.target.value = value;
+    });
+  }
 
   // Escape key to close FAQ
   document.addEventListener('keydown', function(e) {
