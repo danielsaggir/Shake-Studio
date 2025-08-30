@@ -251,24 +251,40 @@
 
   <!-- Contact Form Section -->
 <section class="form" id="contact">
-  <div class="container">
-    <h2>השאירו פרטים ונחזור אליכם</h2>
-    <form id="contactForm">
-      <input type="text" name="name" placeholder="שם מלא" required aria-label="שם מלא" />
-      <input type="tel" name="phone" placeholder="טלפון" required aria-label="טלפון" pattern="[0-9]{10}" />
-      <input type="email" name="email" placeholder="אימייל" required aria-label="אימייל" />
-      <textarea name="message" placeholder="הודעה" rows="4" aria-label="הודעה"></textarea>
+<div class="container">
+  <h2>השאירו פרטים ונחזור אליכם</h2>
+  <form id="contactForm">
+    <input type="text" name="name" placeholder="שם מלא" required aria-label="שם מלא" />
+    <input type="tel" name="phone" placeholder="טלפון" required aria-label="טלפון" pattern="[0-9]{10}" />
+    <input type="email" name="email" placeholder="אימייל" required aria-label="אימייל" />
+    <textarea name="message" placeholder="הודעה" rows="4" aria-label="הודעה"></textarea>
+<fieldset class="membership-options">
+  <legend>מה הכי מעניין אותך?</legend>
 
-      <!-- 🕵️ שדה honeypot נגד בוטים -->
-      <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+  <label class="option">
+    <input type="radio" name="membership" value="pilates">
+    <span>פילאטיס מכשירים</span>
+  </label>
 
-      <button type="submit">
-        <span>שלחו לי פרטים</span>
-        <i class="fas fa-paper-plane"></i>
-      </button>
-      <input type="hidden" name="_captcha" value="false">
-    </form>
-  </div>
+  <label class="option">
+    <input type="radio" name="membership" value="strength">
+    <span>אימוני כוח</span>
+  </label>
+
+ <label class="option">
+    <input type="radio" name="membership" value="combo">
+    <span>פילאטיס משולב עם כוח</span>
+  </label>
+</fieldset>
+
+    <input type="text" name="website" style="display:none" tabindex="-1" autocomplete="off">
+    <button type="submit">
+      <span>שלחו לי פרטים</span>
+      <i class="fas fa-paper-plane"></i>
+    </button>
+    <input type="hidden" name="_captcha" value="false">
+  </form>
+</div>
 </section>
 
 
@@ -285,7 +301,7 @@
         allowfullscreen="" 
         loading="lazy" 
         referrerpolicy="no-referrer-when-downgrade"
-        title="מיקום הסטודיو - Shake Studio">
+        title="מיקום הסטודיוو - Shake Studio">
       </iframe>
     </div>
   </div>

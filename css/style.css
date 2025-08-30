@@ -472,13 +472,14 @@ header h1 {
   font-weight: 700;
 }
 #contactForm {
-  max-width: 600px;
+  max-width: 750px;   /* 👈 יותר מקום לשדות ולאופציות */
   margin: 0 auto;
   background: var(--bg-light);
   padding: 40px;
   border-radius: 20px;
   box-shadow: var(--shadow-lg);
 }
+
 #contactForm input,
 #contactForm textarea {
   width: 100%;
@@ -516,6 +517,79 @@ header h1 {
 #contactForm button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+.membership-options {
+  text-align: center;     /* מרכז את התוכן */
+  padding:20px;
+  border: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;        /* ירידה לשורה חדשה במסכים קטנים */
+  justify-content: center;/* מרכז את כל האופציות */
+  margin-bottom: 20px;
+}
+
+.membership-options legend {
+  width: 100%;            /* שיהיה בשורה נפרדת */
+  text-align: center;     /* מרכז גם את הכותרת */
+  font-weight: bold;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+}
+
+.membership-options .option {
+  display: inline-block;
+  margin: 8px;
+  position: relative;
+}
+
+.membership-options input[type="radio"] {
+  display: none; /* מסתיר את הכפתור המקורי */
+}
+
+.membership-options .option span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 2px solid var(--primary-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  background: white;
+  color: var(--primary-color);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* אפקט ריחוף */
+.membership-options .option span:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 16px rgba(32,178,170,0.3);
+}
+
+/* אפקט לחיצה (קפיצה החוצה) */
+.membership-options .option span:active {
+  transform: scale(1.08) rotate(-1deg);
+  box-shadow: 0 10px 20px rgba(32,178,170,0.5);
+}
+
+/* כשהאופציה נבחרה */
+.membership-options input[type="radio"]:checked + span {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  box-shadow: 0 12px 24px rgba(32,178,170,0.6);
+  animation: pulseGlow 0.6s ease;
+}
+
+/* --- אנימציות --- */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 rgba(32,178,170,0.0); }
+  50% { box-shadow: 0 0 20px rgba(32,178,170,0.7); }
+  100% { box-shadow: 0 12px 24px rgba(32,178,170,0.6); }
 }
 
 /* -------------------- MAP SECTION -------------------- */
